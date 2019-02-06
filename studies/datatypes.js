@@ -24,3 +24,47 @@ console.log(numberTwo + 7) // prints 10 since we altered the value that was copi
 *  the copied value stored in numberTwo
 */
 console.log(numberOne);
+
+/* COMPLEX DATATYPES
+* Unlike simple datatypes, complex datatypes CAN aggregate, hold, and collect
+* other values. This is because they have an indefinite size. The original value CAN be altered.
+* 
+* Complex datatypes are COPY BY REFERENCE. When assigned or passed, you are always refencing
+* the SAME complex datatype. As a result, this reference CAN be changed
+*/
+// list of complex datatypes
+const complexDatatypes = [[], {}, function() {}];
+
+// examples of storing a complex dataype in memory
+var numbers = [2, 3, 4, 5];
+var user = {
+    "fullName": "Uraeus Millet",
+    "age": 23,
+    "hobbies": ["anime", "javascript", "football"],
+};
+
+// Arrays and objects do not have a fixed size
+numbers.push(6, 7);
+console.log(numbers); //prints [2, 3, 4, 5, 6, 7]
+
+user.email = "uraeusmillet@gmail.com";
+// code below prints { "fullname": "Uraeus Millet", "age": 23, "hobbies": ["anime", "javascript", "football"], "email": "uraeusmillet@gmail.com"}
+console.log(user);
+
+var a = {"item": "Cheese"};
+var b = a;
+console.log(b) //prints reference of object provided by a. {"item": "Cheese"};
+
+b.item = "Jelly";
+console.log(b); //prints {"item": "Jelly"}.
+console.log(a); //prints {"item": "Jelly"}. changing values effects all reference of object. SAME OBJECT IS BEING REFERENCED
+
+/* PROPERTIES AND METHODS OF COMPLEX DATATYPES
+* Properties are values stored as key value pairs of Object returned from 
+* constructor function
+*
+* Methods are functions in Object returned by constructor function
+*/
+
+// list of array methiods
+const arrayMethods = [".push()", ".pop()", ".concat()", ".unshift()", ".shift()", ".map()"];
