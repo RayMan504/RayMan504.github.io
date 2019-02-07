@@ -36,11 +36,44 @@ for(let i = array.length -1; i > -1; i--) {
 }
 
 /* FOR IN LOOPS
-* For in loops iterate over objects
-*
+* For in loops iterate over objects.
+* once iterated, we can print or return all the keys in an object.
 *
 *
 *
 *
 *
 */
+const alpha = {
+    "letter": 'a',
+    "number": 1,
+}
+// for every key in alpha object
+for(var key in alpha) {
+    // print all the keys in alpha object
+    console.log(key); // prints 'letter' 'number' while looping
+}
+
+/* Similar to for loops, for in loops can access all values in 
+* an object by looping through the object's keys
+*/
+const alpha2 = {
+    "letter": 'a',
+    "number": 1,
+}
+
+for(var key in alpha2) {
+    // console.log(alpha.key); -> dot syntax does not work because a literal property call key is being searched for when one does not exist
+    console.log(alpha2[key]); // dynamically searches for value stored at key. prints 'a' 1 durng loop
+}
+
+/* WHILE LOOPS
+* Execute code while a condition is true
+* BE SURE TO BREAK OUT OF LOOP WITHIN BODY
+*/
+var number = 0
+while (number < 10) {
+    console.log(number)
+    // infinite loop occurs if you do not run code telling loop to stop
+    number++;
+}
