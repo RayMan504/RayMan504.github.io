@@ -14,7 +14,8 @@
  */
 function isArray(value) {
     // YOUR CODE BELOW HERE //
-    
+    // use Array.isArray to check if value is array
+    return Array.isArray(value) ? true : false;
     
     
     
@@ -31,6 +32,16 @@ function isArray(value) {
  */
 function isObject(value) {
     // YOUR CODE BELOW HERE //
+    // if value is an array, null, Date, number, string
+    if(Array.isArray(value) || typeof value === 'number' || typeof value === 'string' || value instanceof Date || typeof value === 'boolean' || value === null) {
+        // console.log(typeof value === 'number', 'hit');
+        return false;
+    } else {
+        // return false
+        return true;
+    } 
+        // return false;
+    
     
     
     
@@ -46,7 +57,12 @@ function isObject(value) {
  */
 function isCollection(value) {
     // YOUR CODE BELOW HERE //
-    
+    // if value is array or collection object -> try and reuse isObject
+    if(Array.isArray(value) || isObject(value)) {
+        return true;
+    } else {
+        return false;
+    }
     
     
     
@@ -74,7 +90,42 @@ function isCollection(value) {
  */ 
 function typeOf(value) {
     // YOUR CODE BELOW HERE //
-    
+    // check if value is a collection -> reuse isCollection
+    if(typeof value === 'function') {
+        return 'function'
+    } else if(Array.isArray(value)) {
+        // return 'array'
+        return 'array';
+    // else
+    // else if typeof string
+    } else if(typeof value === 'string') {
+        // return string
+        return 'string';
+    // else if typeof number
+    } else if(typeof value === 'number') {
+        // return number
+        return 'number'
+    // else if typeof boolean
+    } else if(typeof value === 'boolean') {
+        // return boolean
+        return 'boolean';
+    // else if typeof function
+    } else if(value instanceof Date) {
+        // return function
+        return 'date'
+    // else if typeof undefined
+    } else if(typeof value === 'undefined') {
+        // return undefined
+        return 'undefined';
+    // else if null
+    } else if(value === null) {
+        // return null
+        return 'null';
+    // else 
+    } else {
+        // return Date
+        return 'object';
+    }
     
     
     

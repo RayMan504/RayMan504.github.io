@@ -23,10 +23,27 @@
  */
 function range(start, end) {
     // YOUR CODE GOES BELOW HERE //
-    
-    
-    
-    
+    // create array output
+    var rangeArray = [];
+    // if start is bigger than end
+    if(start < end) {
+        // loop forward
+        for(let i = start; i <= end; i++) {
+            // push numbers into array
+            rangeArray.push(i);
+        }
+        // return rangeArray
+    // else 
+    } else {
+        // loop backwards
+        for(let i = start; i >= end; i--) {
+            console.log('hit?');
+            // push numbers into array
+            rangeArray.push(i);
+        }
+    }
+    return rangeArray;
+    // return array
     // YOUR CODE GOES ABOVE HERE //
 }
 

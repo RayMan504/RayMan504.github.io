@@ -13,7 +13,15 @@
  */
 function createGreaterThanFilter(base) {
     // YOUR CODE BELOW HERE //
-    
+    // create array of arguments
+    var args = Array.from(arguments);
+    console.log(args, 'args')
+    // return function that takes a value
+    return function (value) {
+        // check if value is greater than base
+        return value > base;
+    };
+        // 
     
     
     
@@ -27,7 +35,9 @@ function createGreaterThanFilter(base) {
  */
 function createLessThanFilter(base) {
     // YOUR CODE BELOW HERE //
-    
+    return function (value) {
+        return value < base;
+    }
     
     
     
@@ -41,7 +51,12 @@ function createLessThanFilter(base) {
  */
 function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
-    
+    // return a function that takes a string
+    return function(string) {
+        // check if first element is startsWith value
+        console.log(startsWith, 'string?')
+        return string[0].toLowerCase() === startsWith.toLowerCase();
+    }
     
     
     
@@ -55,7 +70,11 @@ function createStartsWithFilter(startsWith) {
  */
 function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
-    
+    // return function that takes a string
+    return function(string) {
+        // check if last element in string matches endsWith string
+        return string[string.length -1].toLowerCase() === endsWith.toLowerCase();
+    }
     
     
     
@@ -71,7 +90,16 @@ function createEndsWithFilter(endsWith) {
  */
 function modifyStrings(strings, modify) {
     // YOUR CODE BELOW HERE //
-    
+    /* use reduce to return array of modified values
+    * reduce takes callback function as paramter
+    * callback takes array as accumulator and element in strings array
+    */
+    return strings.reduce((array, string) => {
+        // push function call modifiying string element into out put array
+        array.push(modify(string));
+        // return array
+        return array;
+    }, []);
     
     
     
@@ -89,7 +117,13 @@ function modifyStrings(strings, modify) {
  */
 function allStringsPass(strings, test) {
     // YOUR CODE BELOW HERE //
-    
+    /* use reduce to return true if all strings pass a test. reduce takes a callback funtion
+    * callack function takes boolean and all elements in strings array
+    */
+    return strings.reduce((boolean, string) => {
+        // return true if all elements pass test. return false otherwise
+        return test(strings) ? boolean : false;
+    }, true);
     
     
     
