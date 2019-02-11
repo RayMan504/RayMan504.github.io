@@ -90,21 +90,22 @@ function makeContactList() {
         // create print all names function
         printAllContactNames: function () {
             // loop contacts using reduce. reduce takes callback. callback takes seed and contact
-            return contacts.reduce((accum, contact) => {
+            // return contacts.reduce((accum, contact) => {
                 // return first and last names separated by new line block
                 // reassign seed to contact fullname
-                accum += `${contact.nameFirst} ${contact.nameLast}`;  
                 // append new line block to end of fullname
-                accum = accum.split("");
-                debugger;
-                console.log(accum, 'array?')
-                if(accum.indexOf('\n') === -1) {
-                    accum.push('\n');
-                }
-                console.log(contact.nameFirst.split(""), 'array?')
-                // accum.push('\n');
-                return accum.join("");
-            }, '')
+                // accum += `${contact.nameFirst} ${contact.nameLast}\n`;  
+                // return accum.join("");
+            // }, '')
+            // create output string
+            var output = ''
+            // loop conatcts array
+            for (let i = 0; i < contacts.length; i++) {
+                // reassign output to 
+                output += `${contacts[i].nameFirst} ${contacts[i].nameLast}\n`
+            }
+            // return output.substring();
+            return output.substring(0, output.length -1);
         }
         
     }
