@@ -34,7 +34,52 @@ var myVariable = 1;
 var myVariable = true;
 myVariable = "someString";
 
-/*HOISTING
-
 /* CONSTANTS
-* 
+* Variables whose values never change
+* Block scoped
+* Are not hoisted to the top of the scope
+* Constants are created with the const keyword and are assigned a value immediately
+*/
+// const name; -> constants cannot be left unassigned
+const name = "Kendall Jones";
+
+
+/* LET
+* Variables that are blocked scoped and optionally given a value. Onced used in 
+* a code block, that variable's scope is limited to that block. 
+*/
+
+function blockScope() {
+    let a = 1;
+    if(true) {
+        let a = 2; //prints 2. different variable a tied to conditional statement code block
+        console.log(a)
+    }
+    console.log(a) //prints 1. different variable a tied to function body code block
+}
+
+/*HOISTING
+* The concept of variables with the var keyword and function declarations being moved 
+* to the top of your code through memory during the compile phase of running your code.
+*
+* With var keyword variables, just the variable name is hoisted. 
+* A function's entire definition gets hoisted. 
+*/
+ if(counselorName === undefined) {
+     /* counselorName variable name hoisted to top of scope. A variable with no assigned value is undefined 
+     * and will result in the if statement's condidition evaluating to true.
+     * counselorName is reassigned to the string 'Gregory'.
+     */ 
+     var counselorName = "Gregory"; 
+ }
+console.log(counselorName) //prints Gregory. 
+
+if(add(2, 3) < 10) {
+    /* entire function definition is hoisted to top of scope. function call of add evaluates to
+    * 5 which is less than 10. String message prints to the console.
+    */
+    function add (numberOne, numberTwo) {
+        return numberOne + numberTwo;
+    }
+    console.log("Heeeeyy");
+}
