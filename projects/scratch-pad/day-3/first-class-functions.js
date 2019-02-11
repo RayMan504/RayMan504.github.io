@@ -122,7 +122,7 @@ function allStringsPass(strings, test) {
     */
     return strings.reduce((boolean, string) => {
         // return true if all elements pass test. return false otherwise
-        return test(strings) ? boolean : false;
+        return test(string) ? boolean : false;
     }, true);
     
     
