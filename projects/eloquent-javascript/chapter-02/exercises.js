@@ -3,8 +3,26 @@
 // triangles ///////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function triangles() {
-
+function triangles(number) {
+  /* wrtie a loop that prints the hashtag (#) character any number of times to 
+  * form a triangle
+  */
+  //loop starting from 1 to input number
+  var array = [];
+  var triangleString = '';
+  for(let i = 1; i <= number; i++) {
+    //print the hashtag the same number of times as current index in loop
+    //create empty string
+    // reassign string to incremented # string
+    triangleString += "#"
+    array.push(triangleString);
+    // console.log(triangleString);
+    // console.log('#');
+  }
+  // console.log(array);
+  for(let i = 0; i < array.length; i++) {
+    console.log(array[i]);
+  }
 }
 ////////////////////////////////////////////////////////////////////////////////
 // fizzBuzz ////////////////////////////////////////////////////////////////////
