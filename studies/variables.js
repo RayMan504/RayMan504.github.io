@@ -74,12 +74,12 @@ function blockScope() {
  }
 console.log(counselorName) //prints Gregory. 
 
-if(add(2, 3) < 10) {
+// if(add(2, 3) < 10) {
     /* entire function definition is hoisted to top of scope. function call of add evaluates to
     * 5 which is less than 10. String message prints to the console.
     */
-    function add (numberOne, numberTwo) {
-        return numberOne + numberTwo;
-    }
-    console.log("Heeeeyy");
-}
+    // function add (numberOne, numberTwo) {
+    //     return numberOne + numberTwo;
+    // }
+    // console.log("Heeeeyy");
+// }

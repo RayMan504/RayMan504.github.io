@@ -70,7 +70,7 @@ function doSomething(greeting) {
     var a = 3;
     return greeting.toUpperCase(); 
 }
-console.log(a) // reference error: parent global scope cannot access variables defined in child local scope of doSomething function
+//console.log(a) -> reference error: parent global scope cannot access variables defined in child local scope of doSomething function
 
 /* NESTED SCOPES
 * nested scopes occur when a function is defined withing another function's body
@@ -86,7 +86,7 @@ function lowerCase(greeting) {
     }
     upperCase(greeting);
     console.log(result); //prints 'HELLO WORLD';
-    console.log(number); //reference error. lowerCase parent scope cannot access number variable in upperCase child scope
+    //console.log(number); -> reference error. lowerCase parent scope cannot access number variable in upperCase child scope
 }
 lowerCase(greeting);
 
