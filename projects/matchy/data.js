@@ -89,12 +89,12 @@ console.log(animals);
 var friends = [];
 
 function getRandom(animals) {
-    return Math.floor(Math.random() * (animals.length - 1 - 0 + 1) + 0);
+    return Math.floor(Math.random() * animals.length);
 }
 console.log(getRandom(animals), 'random?');
 friends.push(animals[getRandom(animals)].name);
 console.log(friends);
-duck.friends = [];
+animals[getRandom(animals)].friends = friends;
 
 /**
  * Nice work! You're done Part 1. Pat yourself on the back and

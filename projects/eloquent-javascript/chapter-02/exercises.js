@@ -66,6 +66,13 @@ function fizzBuzz() {
 ////////////////////////////////////////////////////////////////////////////////
 
 function drawChessboard() {
+  /* create a string that represents an 8 x 8 grid using newline characters to
+  * separate lines 
+  */
+  //create chessBoard string
+  //loop from 1 to 8
+    //concatenate space string and hashtag string to chessBoard string
+  // return chessBoard string
 
 }
 
