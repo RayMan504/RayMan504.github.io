@@ -31,6 +31,24 @@ if (number < 7) {
     console.log('default message');
 }
 
+
+/* If an if - else if statement contains two true conditional expressions,
+* the FIRST conditional statement that evaluates to true runs corresponding code
+*/
+if(6 > 7) {
+    console.log('Boo');
+//the first condtion that evaluates to true
+} else if('string' === 'string') {
+    console.log('lalalala'); // prints 'lalalala' to console
+} else if(6 < 7) {
+    console.log('7 ate 9');
+} else {
+    console.log('nada');
+}
+
+
+
+
 /*SWITCH STATEMENTS
 * Switch statements evaluate an input expression by matching the expression
 * with to a case clause. Statements are ran based on association with matched 

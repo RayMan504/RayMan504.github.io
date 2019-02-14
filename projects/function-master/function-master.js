@@ -3,7 +3,17 @@
 //////////////////////////////////////////////////////////////////////
 
 function objectValues(object) {
-
+    /* should return all values from an object in an array
+    */ 
+    //create array 
+    var array = [];
+    //loop object
+    for(var key in object) {
+        //push elements in object to array
+        array.push(object[key]);
+    }
+    //return array
+    return array;
 } 
 
 //////////////////////////////////////////////////////////////////////
@@ -11,6 +21,21 @@ function objectValues(object) {
 //////////////////////////////////////////////////////////////////////
 
 function keysToString(object) {
+    /* should return a string of all keys
+    * in the object separated by a space
+    */
+    // one liner solution -> return Object.keys(object).join(" ");
+    return Object.keys(object).join(" ");
+    // //create string of keys
+    // var keys = '';
+    // // loop object
+    // for(var key in object) {
+    //     //add keys and space to keys string
+    //     keys += `${key} `;
+    // }
+    // // console.log(keys);
+    // return keys;
+    
 
 }
 
@@ -19,7 +44,21 @@ function keysToString(object) {
 //////////////////////////////////////////////////////////////////////
 
 function valuesToString(object) {
-    
+    //return all values in object as a string separated with space
+    //create string
+    var keyValues = [];
+    var array = Object.keys(object);
+    //loop array of keys
+    for(var i = 0; i < array.length; i++) {
+        //check if values are a string 
+        if(typeof object[array[i]] === 'string') {
+            // add values separated with space
+            keyValues.push(object[array[i]]);
+        }
+    }
+    //return string
+    // console.log(keyValues.join(" "))
+    return keyValues.join(" ");
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -27,7 +66,12 @@ function valuesToString(object) {
 //////////////////////////////////////////////////////////////////////
 
 function arrayOrObject(collection) {
-    
+    //take one argument and return 'array' if array or 'object'
+    if(Array.isArray(collection)) {
+        return 'array'
+    }
+    return 'object';
+    //one liner solution -> return Array.isArray(collection) ? 'array' : 'object'
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -35,7 +79,8 @@ function arrayOrObject(collection) {
 //////////////////////////////////////////////////////////////////////
 
 function capitalizeWord(string) {
-    
+    //takes a one word string, and returns first letter capitalized
+    return string[0].toUpperCase() + string.slice(1);
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -43,6 +88,18 @@ function capitalizeWord(string) {
 //////////////////////////////////////////////////////////////////////
 
 function capitalizeAllWords(string) {
+    //captilize first letter of all words in a string
+    // create new array
+    var newArray = []
+    //turn single input string into array
+    var array = string.split(" ");
+    // loop array
+    for(var i = 0; i < array.length; i++) {
+        //concat output string with first letter of each word capitalized
+        newArray.push(`${array[i][0].toUpperCase()}${array[i].slice(1)}`);
+    }
+    // console.log(newString);
+    return newArray.join(" ");
     
 }
 
