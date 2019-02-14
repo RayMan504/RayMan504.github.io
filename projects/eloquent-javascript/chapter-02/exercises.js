@@ -65,14 +65,32 @@ function fizzBuzz() {
 // drawChessboard //////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function drawChessboard() {
-  /* create a string that represents an 8 x 8 grid using newline characters to
-  * separate lines 
+function drawChessboard(number) {
+  /* write a program that creates a string represented by an
+  * 8x8 grid. Use newline characters to separate lines. At each position on grid
+  * there is either a space or a hashtag (#). characters should form a chessboard
   */
-  //create chessBoard string
-  //loop from 1 to 8
-    //concatenate space string and hashtag string to chessBoard string
-  // return chessBoard string
+  // create chessboard string
+  var chessboard = '';
+  var scale;
+  //loop over total number of grids to handle rows
+  for(var i = 0; i < number; i++) {
+    // loop over total number of grids to handle columns
+    if (i % 2) {
+      scale = '# '
+    } else {
+      scale = ' #';
+    }
+    for(var j = 0; j < number / 2; j++) {
+      // debugger;
+      chessboard += scale; 
+    }
+    //add newline character
+    chessboard += '\n';
+  }
+  //print string
+  console.log(chessboard);
+  
 
 }
 
