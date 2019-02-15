@@ -68,3 +68,8 @@ console.log(a); //prints {"item": "Jelly"}. changing values effects all referenc
 
 // list of array methiods
 const arrayMethods = [".push()", ".pop()", ".concat()", ".unshift()", ".shift()", ".map()"];
+
+// The push method is an impure method that adds values to the end of the original array
+var array = ['do', 'you', 'know', 'da'];
+array.push('way');
+console.log(array) // ['do', 'you', 'know', 'da', 'way']

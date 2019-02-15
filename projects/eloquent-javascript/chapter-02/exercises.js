@@ -9,7 +9,7 @@ function triangles(number) {
   */
   //loop starting from 1 to input number
   var array = [];
-  var triangleString = '';
+  var triangleString = ''; 
   for(let i = 1; i <= number; i++) {
     //print the hashtag the same number of times as current index in loop
     //create empty string
@@ -72,24 +72,24 @@ function drawChessboard(number) {
   */
   // create chessboard string
   var chessboard = '';
+  var chess = [];
   var scale;
   //loop over total number of grids to handle rows
   for(var i = 0; i < number; i++) {
     // loop over total number of grids to handle columns
-    if (i % 2) {
-      scale = '# '
+    if (i % 2 === 0) {
+      scale = ' #'
     } else {
-      scale = ' #';
+      scale = '# ';
     }
-    for(var j = 0; j < number / 2; j++) {
-      // debugger;
+    for(var j = 0; j < number / 2 ; j++) {
       chessboard += scale; 
     }
     //add newline character
     chessboard += '\n';
   }
   //print string
-  console.log(chessboard);
+  console.log(chessboard)
   
 
 }
