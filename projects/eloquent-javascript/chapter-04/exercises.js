@@ -49,8 +49,19 @@ function sum(array) {
 // reverseArray ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function reverseArray() {
-
+function reverseArray(array) {
+  //takes array and returns new array of elements in reverse order
+  //create new array
+  var reversed = [];
+  //only loop if array has a length
+  if(array.length > 0) {
+    //loop input array backwards
+    for(let i = array.length - 1; i > -1; i--) {
+      //push to new array
+      reversed.push(array[i]);
+    }
+  }
+  return reversed;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
