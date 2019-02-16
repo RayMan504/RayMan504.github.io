@@ -2,7 +2,20 @@
 // min /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function min() {
+function min(numberOne, numberTwo) {
+  //takes two numbers and returns minimum number within their range. handle negative numbers
+  //if first number is smaller than second number
+  if(numberOne < numberTwo) {
+    return numberOne;
+  }
+  //if first number is bigger than second number
+  if(numberOne > numberTwo) {
+    return numberTwo;
+  }
+  // if both numbers are the same
+  if(numberOne === numberTwo) {
+    return numberOne;
+  }
 
 }
 
