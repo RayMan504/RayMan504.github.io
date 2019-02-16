@@ -39,16 +39,44 @@ function isEven(number) {
 // countChars //////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function countChars() {
-
+function countChars(string, character) {
+  //takes a string and a character and returns amount of times input character occurs in string
+  //store count
+  var count = 0;
+  //loop over string
+  for(let i = 0; i < string.length; i++) {
+    //check if element in string matches character.
+    if(string[i] === character) {
+      //increase count if there is a match
+      count += 1;
+    }
+  }
+  //return count
+  return count;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // countBs /////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function countBs() {
-
+function countBs(string) {
+  //takes a string and returns how many times a character appears in that string
+  /*
+    //store count 
+    var count = 0;
+    //loop over string
+    for(let i = 0; i < string.length; i++) {
+      //if character in string is a capital B
+      if(string[i] === 'B') {
+        //increase count
+        count += 1;
+      }
+    }
+    //return count
+    return count;
+  */
+  //rewrite countBs to make use of countChars
+  return countChars(string, 'B');
 }
 
 ////////////////////////////////////////////////////////////////////////////////
