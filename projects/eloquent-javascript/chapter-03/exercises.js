@@ -10,8 +10,29 @@ function min() {
 // isEven //////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function isEven() {
-
+function isEven(number) {
+  //recursion -> when a function calls itself
+  //base case: conditional statement that tells function to stop calling itself
+  // if number is zero 
+  if(number === 0) {
+    //return  true
+    return true;
+  }
+  //if a number is one
+  if(number === 1) {
+    //return false 
+    return false;
+  }
+  //if the input number is negative
+  if(number < 0) {
+    //reassign negative number to inverse
+    number = -number;
+    // return a recursive function call where the parameter is positive number
+    console.log(number, 'positive number');
+    return isEven(number);
+  }
+  // return a recursive function call where the parameter is positive number decremented by two
+  return isEven(number - 2);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
