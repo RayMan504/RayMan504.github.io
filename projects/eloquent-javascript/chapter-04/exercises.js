@@ -68,8 +68,20 @@ function reverseArray(array) {
 // reverseArrayInPlace /////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function reverseArrayInPlace() {
-
+function reverseArrayInPlace(array) {
+  //create temporary storage array
+  var temp = [];
+  //loop input array backwards
+  for(let i = array.length -1; i > -1; i--) {
+    //push to temporary array
+    temp.push(array[i]);
+  }
+  //loop temporary array forwards
+  for(let i = 0; i < temp.length; i++) {
+    //reassign values in original array to values in reverse temp array
+      array[i] = temp[i];
+  }
+  return array;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
