@@ -6,6 +6,10 @@ function range(num1, num2) {
   //takes two numbers and returns an array of all number between two input numbers
   //create ranger array
   var array = [];
+  //if numbers are negative
+  if(num1 < 0 || num2 < 0) {
+    return [];
+  } else
   //if first number is larger than second number
   if(num1 > num2) {
     //loop backwards
@@ -52,16 +56,23 @@ function sum(array) {
 function reverseArray(array) {
   //takes array and returns new array of elements in reverse order
   //create new array
-  var reversed = [];
-  //only loop if array has a length
-  if(array.length > 0) {
-    //loop input array backwards
-    for(let i = array.length - 1; i > -1; i--) {
-      //push to new array
-      reversed.push(array[i]);
-    }
-  }
-  return reversed;
+  // var reversed = [];
+  // //only loop if array has a length
+  // if(array.length > 0) {
+  //   //loop input array backwards
+  //   for(let i = array.length - 1; i > -1; i--) {
+  //     //push to new array
+  //     reversed.push(array[i]);
+  //   }
+  // }
+  // return reversed;
+  //solution with reduce
+  return array.reduce((reverse, value) => {
+    //place all values at beginning of new array
+    reverse.unshift(value);
+    //return new array
+    return reverse;
+  }, [])
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -88,7 +99,35 @@ function reverseArrayInPlace(array) {
 // arrayToList /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function arrayToList() {
+function arrayToList(array) {
+  //transform array list into object list structure
+  // create new function that takes input array
+  var objList = {}
+  function recursiveListAccum (object, array) {
+    //create object list
+    //if array is empty -> base case
+    if(array.length === 0) {
+      //return object list
+      return objList
+    }
+    //loop over input array
+    for(let i = 0; i < array.length; i++) {
+      //assign value key to element in array
+      if(array.length - 1 === i) {
+        objList.rest = null;
+      }
+      objList['value'] = array[i];
+      objList.rest = {}
+      console.log(objList, 'you full?')
+    }
+    //pop array
+    array.pop();
+    console.log(array, 'array')
+    //call function again
+    return recursiveListAccum(array);
+  }
+  return recursiveListAccum(array);
+    
 
 }
 
