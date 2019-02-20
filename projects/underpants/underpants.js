@@ -157,7 +157,7 @@ _.indexOf = function(array, value) {
             index = indexStore[0];
         }
     }
-    console.log(indexStore);
+    // console.log(indexStore);
     return index;
 }
 
@@ -176,15 +176,16 @@ _.indexOf = function(array, value) {
 *   _.contains([1,"two", 3.14], "two") -> true
 */
 _.contains = function(array, value) {
-    if(!value) {
-        return false;
-    }
-    for(let i = 0; i < array.length; i++) {
-        if(array[i] === value) {
-            return true;
-        }
-    }
-    return false;
+    // if(!value) {
+    //     return false;
+    // }
+    // for(let i = 0; i < array.length; i++) {
+    //     if(array[i] === value) {
+    //         return true;
+    //     }
+    // }
+    // return false;
+    return _.indexOf(array, value) > -1 ? true : false;
 }
 
 /** _.each
@@ -205,8 +206,8 @@ _.contains = function(array, value) {
 _.each = function(collection, func) {
     // debugger;
     if(!Array.isArray(collection)) {
-        console.log('array');
-        console.log('object');
+        // console.log('array');
+        // console.log('object');
         for(var key in collection) {
             func(collection[key], key, collection)
         }
@@ -230,7 +231,7 @@ _.each = function(collection, func) {
 _.unique = function(array) {
     var dupeFree = [];
     for(let i = 0; i < array.length; i++) {
-        if(dupeFree.indexOf(array[i]) === -1) {
+        if(_.indexOf(dupeFree, array[i]) === -1) {
             dupeFree.push(array[i]);
         }
     }
@@ -261,7 +262,7 @@ _.filter = function(collection, test) {
     // }
     _.each(collection, function (value) {
         // debugger;
-        console.log(collection.indexOf(value), 'hey')
+        // console.log(collection.indexOf(value), 'hey')
         if(test(value, collection.indexOf(value), collection)) {
             passed.push(value);
         }
@@ -281,7 +282,15 @@ _.filter = function(collection, test) {
 * Examples:
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
-
+_.reject = function(array, test) {
+    var failed = [];
+    _.filter(array, (value) => {
+        if(!test(value, array.indexOf(value), array)) {
+            failed.push(value);
+        }
+    })
+    return failed
+}
 
 /** _.partition
 * Arguments:
@@ -301,6 +310,11 @@ _.filter = function(collection, test) {
 *   }); -> [[2,4],[1,3,5]]
 }
 */
+_.partition = function(array, func) {
+    var nested = [];
+    nested.push(_.filter(array, func), _.reject(array, func));
+    return nested;
+}
 
 
 /** _.map
@@ -318,6 +332,13 @@ _.filter = function(collection, test) {
 * Examples:
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
+_.map = function(collection, func) {
+    var transformed = [];
+    _.each(collection, (value, index, collection) => {
+        transformed.push(func(value, index, collection))
+    });
+    return transformed;
+}
 
 
 /** _.pluck
@@ -330,6 +351,13 @@ _.filter = function(collection, test) {
 * Examples:
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
+_.pluck = function(array, property) {
+    return _.map(array, (value, index, array) => {
+        if(value.hasOwnProperty(property)) {
+            return value[property];
+        }
+    })
+}
 
 
 /** _.every
@@ -352,7 +380,36 @@ _.filter = function(collection, test) {
 *   _.every([2,4,6], function(e){return e % 2 === 0}) -> true
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
-
+_.every = function(collection, test) {
+    var result = true;
+    console.log(test, 'boo')
+    if(test === undefined) {
+        for(let i = 0; i < collection.length; i++) {
+            if(!collection[i]) {
+                result = false;
+            } else {
+                result = true;
+            }
+        }
+    } else {
+        _.each(collection, (value, index, collection) =>{
+            if(!test(value, index, collection)) {
+                result = false;
+            }
+        })
+    }
+    return result;
+//   return _.reduce(collection, (seed, value, collection) => {
+//       console.log(test, 'hey test')
+//       if(value === undefined || value === null) {
+//           return seed;
+//         }
+//       if(test(value)) {
+//           seed = true;
+//       }
+//       return seed;
+//   }, false)
+}
 
 /** _.some
 * Arguments:
@@ -374,7 +431,9 @@ _.filter = function(collection, test) {
 *   _.some([1,3,5], function(e){return e % 2 === 0}) -> false
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
-
+_.some = function() {
+    
+}
 
 /** _.reduce
 * Arguments:
@@ -394,7 +453,26 @@ _.filter = function(collection, test) {
 * Examples:
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
-
+_.reduce = function(array, func, seed){
+  console.log(arguments.length, 'how long?')
+  //???
+  var seedUndefined = arguments.length < 3;
+  console.log(seedUndefined, 'what is this?');
+  _.each(array, function(elem, index, list){
+    //if undefined seed
+    if(seedUndefined) {
+      //???
+      seedUndefined = false;
+      //reassign seed to first element and continue looping
+      seed = elem;
+    } else {
+      //assign seed to function call an continue looping
+      seed = func(seed, elem, index, list);
+    }
+  });
+  //return seed
+  return seed;
+};
 
 /** _.extend
 * Arguments:
