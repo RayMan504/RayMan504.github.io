@@ -431,8 +431,25 @@ _.every = function(collection, test) {
 *   _.some([1,3,5], function(e){return e % 2 === 0}) -> false
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
-_.some = function() {
-    
+_.some = (collection, func) => {
+    var result = false;
+    if(func === undefined) {
+        for(let i = 0; i < collection.length; i++) {
+            if(collection[i]) {
+                result = true;
+            } else {
+                result = false;
+            }
+        }
+    } else {
+        _.each(collection, (value, index, collection) => {
+            if(func(value, index, collection)) {
+                result = true;
+            }
+        })
+        
+    }
+    return result;
 }
 
 /** _.reduce
@@ -488,7 +505,22 @@ _.reduce = function(array, func, seed){
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
-
+_.extend = (...obj) => {
+    // var args = Array.from(arguments)
+    // console.log(args, 'args');
+    // _.each(obj1, (value, key, collection) => {
+    //     _.each(obj2, (value, key, collection) => {
+    //         obj1[key] = value;
+    //     })
+    // })
+    // return obj1;
+    _.each(obj, (object, index, collection) => {
+        _.each(object, (value, key, collection) => {
+            obj[0][key] = value;
+        })
+    })
+    return obj[0];
+}
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
