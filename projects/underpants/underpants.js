@@ -151,12 +151,12 @@ _.last = function(array, number) {
 _.indexOf = function(array, value) {
     var indexStore = [];
     var index = -1;
-    for(var i = 0; i < array.length; i++) {
-        if(value === array[i]) {
+    _.each(array, (val, i, array) => {
+        if(value === val) {
             indexStore.push(i);
             index = indexStore[0];
         }
-    }
+    })
     // console.log(indexStore);
     return index;
 }
@@ -230,11 +230,11 @@ _.each = function(collection, func) {
 */
 _.unique = function(array) {
     var dupeFree = [];
-    for(let i = 0; i < array.length; i++) {
-        if(_.indexOf(dupeFree, array[i]) === -1) {
-            dupeFree.push(array[i]);
+    _.each(array, (value, index, array) => {
+        if(_.indexOf(dupeFree, value) === -1) {
+            dupeFree.push(value);
         }
-    }
+    })
     return dupeFree;
 }
 
@@ -283,13 +283,13 @@ _.filter = function(collection, test) {
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
 _.reject = function(array, test) {
-    var failed = [];
-    _.filter(array, (value) => {
+    // var failed = [];
+    return _.filter(array, (value) => {
         if(!test(value, array.indexOf(value), array)) {
-            failed.push(value);
+            return value;
         }
     })
-    return failed
+    // return failed
 }
 
 /** _.partition
@@ -382,22 +382,29 @@ _.pluck = function(array, property) {
 */
 _.every = function(collection, test) {
     var result = true;
-    console.log(test, 'boo')
-    if(test === undefined) {
-        for(let i = 0; i < collection.length; i++) {
-            if(!collection[i]) {
-                result = false;
-            } else {
-                result = true;
-            }
-        }
-    } else {
+    // console.log(test, 'boo')
+    // if(test === undefined) {
+    //     for(let i = 0; i < collection.length; i++) {
+    //         if(!collection[i]) {
+    //             result = false;
+    //         } else {
+    //             result = true;
+    //         }
+    //     }
+    // } else {
         _.each(collection, (value, index, collection) =>{
+            if(test === undefined) {
+                if(!value) {
+                    result = false;
+                } else {
+                    result = true;
+                }
+            } else
             if(!test(value, index, collection)) {
                 result = false;
             }
         })
-    }
+    // }
     return result;
 //   return _.reduce(collection, (seed, value, collection) => {
 //       console.log(test, 'hey test')
@@ -433,22 +440,17 @@ _.every = function(collection, test) {
 */
 _.some = (collection, func) => {
     var result = false;
-    if(func === undefined) {
-        for(let i = 0; i < collection.length; i++) {
-            if(collection[i]) {
+    _.each(collection, (value, index, collection) => {
+        if(func === undefined) {
+            if(value) {
                 result = true;
             } else {
                 result = false;
-            }
+            } 
+        } else if(func(value, index, collection)) {
+            result = true;
         }
-    } else {
-        _.each(collection, (value, index, collection) => {
-            if(func(value, index, collection)) {
-                result = true;
-            }
-        })
-        
-    }
+    })
     return result;
 }
 
