@@ -2,15 +2,27 @@
 // flatten /////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function flatten() {
+function flatten(arrays) {
+  return arrays.reduce((memo, array) => {
+    memo = memo.concat(array);
+    return memo;
+  }, []);
 
 }
 
 // /////////////////////////////////////////////////////////////////////////////
 // loop ////////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
-
-function loop() {
+//takes value, test function, update function, body function
+function loop(value, test, update, body) {
+  // console.log(value, 'inside loop func');
+  //run test function. stop function if falsey 
+  if(test(value)) {
+    //call body function on value
+    //call update value
+  } else {
+    return value
+  }
 
 }
 
@@ -18,8 +30,25 @@ function loop() {
 // every ///////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function every() {
-
+function every(array, test) {
+  var some  = function(array, test) {
+    var result = false;
+    for(var i = 0; i < array.length; i++) {
+      if(test(array[i])) {
+        result = true;
+      } else {
+        result = false;
+      }
+    }
+    return result;
+  }
+  var result = true;
+  if(some(array, test)) {
+    result = true
+  } else {
+    result = false;
+  }
+  return result;
 }
 
 // /////////////////////////////////////////////////////////////////////////////
