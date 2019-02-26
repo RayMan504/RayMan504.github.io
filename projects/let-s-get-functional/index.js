@@ -27,12 +27,16 @@ var maleCount = function(array) {
 var femaleCount = function(array) {
     //implememt reduce to return number of female customers
     return _.reduce(array, (tally, value) => {
-        //if gender property is female
-        if(value.gender === "female") {
-            //increment tally by 1
-            tally += 1
-        }
-        //return tally total
+        // //if gender property is female
+        // if(value.gender === "female") {
+        //     //increment tally by 1
+        //     tally += 1
+        // }
+        // //return tally total
+        // return tally;
+        tally = _.filter(array, (value) => {
+            return value.gender === 'female';
+        }).length;
         return tally;
     }, 0);
 };
@@ -82,20 +86,80 @@ var averageBalance = function(array) {
     }, 0);
     console.log(sumBalance, 'sumbalance');
     console.log((sumBalance / array.length), 'average');
-    return (sumBalance / array.length);
-    
+    return (sumBalance / array.length)
+};
+
+var firstLetterCount = function(array, letter) {
+    return _.reduce(array, (start, value) => {
+        if(value.name[0].toUpperCase() === letter.toUpperCase()) {
+            start += 1;
+        }
+        return start;
+    }, 0)
+};
+
+var friendFirstLetterCount = function(array, customer, letter) {
+   console.log(customer, 'who dis?')
+   return _.reduce(array, (start, value) => {
+    if(value.name === customer) {
+        start = firstLetterCount(value.friends, letter);     
+    }   
+    return start;
+   }, 0);
+};
+
+var friendsCount = function(array, name) {
+    return _.reduce(array, (start, value) => {
+        // console.log(value.friends, 'friends?')
+        _.each(value.friends, (friend) => {
+            if(friend.name === name) {
+                start.push(value.name);
+            }
+        })
+        return start;
+    }, [])
     
 };
 
-var firstLetterCount;
+var topThreeTags = function(array) {
+     var tagObject = _.reduce(array, (start, value) => {
+         _.each(value.tags, (tag) => {
+            start[tag] = 1;
+         });
+         return start;
+     }, {});
+     var highestTag = _.reduce(array, (start, value) => {
+         _.each(value.tags, (tag) => {
+             _.each(tagObject, (value, key) => {
+                 if(tag === key) {
+                     tagObject[tag]++
+                 }
+             })
+         })
+         _.each(tagObject, (value) => {
+            if(value > start) {
+                start = value;
+            }   
+         })
+         return start;
+     }, 0);
+     return _.reduce(tagObject, (start, value, key) => {
+        //  console.log(key, 'keys?')
+         if(value === highestTag) {
+             start.push(key);
+         }
+         return start;
+     }, []);
+};
 
-var friendFirstLetterCount;
-
-var friendsCount;
-
-var topThreeTags;
-
-var genderCount;
+var genderCount = function(array) {
+    return _.reduce(array, (start, object) => {
+        start['male'] = maleCount(array);
+        start['female'] = femaleCount(array);
+        start['transgender'] = _.filter(array, (value) => value.gender === 'transgender').length;
+        return start
+    }, {})
+};
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
