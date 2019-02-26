@@ -65,12 +65,19 @@ var oldestCustomer = function(array) {
 };
 
 var youngestCustomer = function(array) {
-    var youngest = _.reduce(array, (young, value) => {
-        young = value.age;
-        if(young < value.age) {
-            return young;
+    var old = _.reduce(array, (start, value) => {
+        // young = value.age;
+        if(start < value.age) {
+            start = value.age;
         }
+        return start;
     }, 0)
+    var youngest = _.reduce(array, (start, value) => {
+        if(start > value.age) {
+            start = value.age;
+        }
+        return start;
+    }, old);
     return _.reduce(array, (name, value) => {
         if(value.age === youngest) {
             name = value.name;
