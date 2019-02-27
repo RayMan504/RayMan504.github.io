@@ -52,3 +52,7 @@ console.log(a *= 9) //a = a * 9 -> prints 9
 
 // The unary (-) flips the positive or negative value of a number
 console.log(-a) //prints -1;
+
+//Ternary Operators works with three values. is often used as a shorthand for if statements
+// condition ? trueExpression : falseExpression
+console.log(2 + 2 === 4 ? "boo" : "nay") //prints "boo"

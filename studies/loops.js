@@ -69,6 +69,7 @@ for(var key in alpha2) {
 
 /* WHILE LOOPS
 * Execute code while a condition is true
+* are used when the number of times that is necesarry to loop is unknown
 * BE SURE TO BREAK OUT OF LOOP WITHIN BODY
 */
 var number = 0

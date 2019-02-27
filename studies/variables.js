@@ -83,3 +83,9 @@ console.log(counselorName) //prints Gregory.
     // }
     // console.log("Heeeeyy");
 // }
+
+//let and const cannot be hoisted. 
+if(2 === 2) {
+    let result = 'true';
+}
+console.log(result) // reference error. result is not defined

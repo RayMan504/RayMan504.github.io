@@ -5,16 +5,18 @@
 var string = "hello";
 console.log(string[0]) //prints 'h';
 console.log(string[string.length -1]) //prints 'o'
-//reassigning elements in a string
-string[1] = 'a';
-string[2] = 'v';
+/* reassigning elements in a string.
+* the only way to change a string value is by reassigning the original string to a new string value stored in a new variable
+* the original string value is immutable
+*/
+string = 'havlo';
 console.log(string); //prints havlo
 
 for(let i = 0; i < string.length; i++) {
     console.log(string[i]) //prints "h" "a" "v" "l" "o" during loop
 }
 
-// Methods of a String
+// Methods of a String. all string methods are pure and return new string values. strigns are immutable
 string.slice() // returns a new copied version of string starting at input index
 string.toUpperCase() // capitalizes all elements in a string
 string.toLowerCase() //makes all elements in a string lower case
