@@ -52,6 +52,15 @@ const subtract = function (num1, num2) {
 
 console.log(subtract(17, 5)) //prints 12
 
+// functions do not have to have paraemters to run code.
+// functions also do not have to have return statements, but when functions with no return statements get called, they result to undefined
+function printSomething() {
+    console.log('Boo') //prints Boo
+}
+console.log(printSomething()); // prints undefined
+
+
+
 /* SCOPE
 * Scope refers to what variables or constants are aceessible where. 
 * Global scope refers to any variables and constants outside of a funnctions scope
@@ -64,7 +73,7 @@ console.log(subtract(17, 5)) //prints 12
 // GLOBAL SCOPE
 var greeting = "Hello World!";
 
-function doSomething(greeting) {
+function doSomething() {
     // LOCAL SCOPE
     console.log(greeting) //prints "Hello World" child local scope has access to variables in parent global scope
     var a = 3;
@@ -76,7 +85,7 @@ function doSomething(greeting) {
 * nested scopes occur when a function is defined withing another function's body
 */
 
-function lowerCase(greeting) {
+function lowerCase() {
     // PARENT LOCAL SCOPE
     let result = greeting.toLowerCase();
     function upperCase(greeting) { //upperCase can access result variable in lowerCase parent scope
@@ -88,7 +97,7 @@ function lowerCase(greeting) {
     console.log(result); //prints 'HELLO WORLD';
     //console.log(number); -> reference error. lowerCase parent scope cannot access number variable in upperCase child scope
 }
-lowerCase(greeting);
+lowerCase();
 
 /* HOISTING
 * an entire function declaration gets hoisted to the top most scope. 

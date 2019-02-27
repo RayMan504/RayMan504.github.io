@@ -34,9 +34,7 @@ var femaleCount = function(array) {
         // }
         // //return tally total
         // return tally;
-        tally = _.filter(array, (value) => {
-            return value.gender === 'female';
-        }).length;
+        tally = _.filter(array, (value) => value.gender === 'female' ).length;
         return tally;
     }, 0);
 };
@@ -65,11 +63,14 @@ var oldestCustomer = function(array) {
 };
 
 var youngestCustomer = function(array) {
+    //store oldest age in container. implement reduce
     var old = _.reduce(array, (start, value) => {
-        // young = value.age;
+        //if seed is less than customer's age
         if(start < value.age) {
+            //reassgin seed to customer's age
             start = value.age;
         }
+        //return oldest age
         return start;
     }, 0)
     var youngest = _.reduce(array, (start, value) => {

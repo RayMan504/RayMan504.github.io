@@ -51,13 +51,17 @@ user.email = "uraeusmillet@gmail.com";
 // code below prints { "fullname": "Uraeus Millet", "age": 23, "hobbies": ["anime", "javascript", "football"], "email": "uraeusmillet@gmail.com"}
 console.log(user);
 
-var a = {"item": "Cheese"};
+var a = {"item": "Cheese", 'price': '$10' };
 var b = a;
-console.log(b) //prints reference of object provided by a. {"item": "Cheese"};
+console.log(b) //prints reference of object provided by a. {"item": "Cheese", 'price': '$10'};
 
 b.item = "Jelly";
-console.log(b); //prints {"item": "Jelly"}.
-console.log(a); //prints {"item": "Jelly"}. changing values effects all reference of object. SAME OBJECT IS BEING REFERENCED
+console.log(b); //prints {"item": "Jelly", 'price': '$10'}.
+console.log(a); //prints {"item": "Jelly", 'price': '$10'}. changing values effects all references of object. SAME OBJECT IS BEING REFERENCED
+
+
+
+
 
 /* PROPERTIES AND METHODS OF COMPLEX DATATYPES
 * Properties are values stored as key value pairs of Object returned from 
@@ -73,3 +77,36 @@ const arrayMethods = [".push()", ".pop()", ".concat()", ".unshift()", ".shift()"
 var array = ['do', 'you', 'know', 'da'];
 array.push('way');
 console.log(array) // ['do', 'you', 'know', 'da', 'way']
+
+//.pop() removes element from the end of an array. returns value that was removed
+console.log(array.pop()); //prints 'way'
+console.log(array.pop()); //prints 'da'
+
+//.concat() returns a new array of merged arrays
+const secondArray = ['oh', 'yes', 'i', 'do'];
+console.log(array.concat(secondArray)); //prints ['do', 'you', 'know', 'oh', 'yes', 'i', 'do'];
+
+
+/* Methods of Simple Datatypes
+* All string methods are pure and return a new string
+*/ 
+
+const stringMethods = ['.toUpperCase()', '.toLowerCase()', '.charAt()', '.split()'];
+//.split('') returns an array of substrings. split takes a seperator string that determines where each split occurs
+const string =' How do you do?';
+console.log(string.split(' ')); //prints ['how', 'do', 'you', 'do?']; //string got split into array of subrtsings separated by space
+
+//.toUpperCase() returns a new string with calling string value capitalized
+const lowerCase = 'i am uppercase';
+console.log(lowerCase.toUpperCase()) //prints 'I AM UPPERCASE'
+
+//.charAt() returns a specified character (utf-16 code unit) at input index as a new string. returns empty string if index is out of range
+const character = 'Ichigo';
+console.log(character.charAt(1)) //prints 'c';
+console.log(character.charAt(15)) //prints '';
+
+const numberMethods = ['.toString()', '.parseInt()', '.isNaN()'];
+//.toString() returns a number as a new string literal
+const num = 3;
+console.log(num.toString()); //prints '3'
+

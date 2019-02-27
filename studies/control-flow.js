@@ -46,6 +46,14 @@ if(6 > 7) {
     console.log('nada');
 }
 
+/* when two statements in an if else statement are true, only code from the
+* FIRST true statement will run
+*/
+if(8 === 8) {
+    console.log('hello') //first true statement executes respective code
+} else if(2 < 3) {
+    console.log('goodbye') //this code is not reached. another true statement exists prior to this code being reached. 
+}
 
 
 
