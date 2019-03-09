@@ -103,30 +103,23 @@ function arrayToList(array) {
   //transform array list into object list structure
   // create new function that takes input array
   var objList = {}
-  function recursiveListAccum (object, array) {
-    //create object list
-    //if array is empty -> base case
-    if(array.length === 0) {
-      //return object list
-      return objList
-    }
-    //loop over input array
-    for(let i = 0; i < array.length; i++) {
-      //assign value key to element in array
-      if(array.length - 1 === i) {
-        objList.rest = null;
-      }
-      objList['value'] = array[i];
-      objList.rest = {}
-      console.log(objList, 'you full?')
-    }
-    //pop array
-    array.pop();
-    console.log(array, 'array')
-    //call function again
-    return recursiveListAccum(array);
+  //handle value key
+  //if array has a length
+  if(array.length) {
+    //add first element to value key in objList
+    objList.value = array[0];
   }
-  return recursiveListAccum(array);
+  //handle rest key
+  //if array has more than 1 element in it
+  if(array.length > 1) {
+    // debugger;
+    //call function again and assign to rest key
+    objList.rest = arrayToList(array.slice(1));
+  } else {
+    //assign rest to null
+    objList.rest = null;
+  }
+  return objList;
     
 
 }
@@ -135,8 +128,16 @@ function arrayToList(array) {
 // listToArray /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function listToArray() {
 
+function listToArray(list) {
+  var arr = [];
+  //since list is an array like object. use for loop on input list. 
+  //start looping at top of list
+  //stop loop at null value at rest key
+  for(var i = list; i = list.rest) {
+    
+  }
+  return arr;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
