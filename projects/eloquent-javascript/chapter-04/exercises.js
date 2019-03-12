@@ -2,10 +2,13 @@
 // range ///////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function range(num1, num2) {
+function range(num1, num2, step) {
   //takes two numbers and returns an array of all number between two input numbers
   //create ranger array
   var array = [];
+  if(step === undefined) {
+    step = 1;
+  }
   //if numbers are negative
   if(num1 < 0 || num2 < 0) {
     return [];
@@ -13,18 +16,16 @@ function range(num1, num2) {
   //if first number is larger than second number
   if(num1 > num2) {
     //loop backwards
-    for(let i = num1; i >= num2; i--) {
+    for(var i = num1; step > 1 || i >= num2; i++) {
       // push numbers into array
       array.push(i);
     }
   } else if(num1 < num2) {
     //loop forward
-    for(let i = num1; i <= num2; i++) {
+    for(var i = num1; i <= num2; i++) {
       //push numbers into array
       array.push(i);
     }
-  } else {
-    return array;
   }
   //return array
   return array;

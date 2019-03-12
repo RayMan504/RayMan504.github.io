@@ -72,25 +72,25 @@ function drawChessboard(number) {
   */
   // create chessboard string
   var chessboard = '';
-  var chess = [];
-  var scale;
+
   //loop over total number of grids to handle rows
-  for(var i = 0; i < number; i++) {
+  for (var y = 0; y < number; y++) {   
     // loop over total number of grids to handle columns
-    if (i % 2 === 0) {
-      scale = ' #'
-    } else {
-      scale = '# ';
-    }
-    for(var j = 0; j < number / 2 ; j++) {
-      chessboard += scale; 
+    for (var x = 0; x < number; x++) {
+      //if sum of x and y is even number
+      if ((x + y) % 2 == 0) {
+        //add space to board
+        chessboard += " ";
+      } else {
+        //add hashtag to board
+        chessboard += "#";
+      }
     }
     //add newline character
     chessboard += '\n';
   }
   //print string
   console.log(chessboard)
-  
 
 }
 
