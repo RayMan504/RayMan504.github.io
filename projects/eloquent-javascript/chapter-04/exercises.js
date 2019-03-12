@@ -172,7 +172,34 @@ function nth(list, num) {
 // deepEqual ///////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function deepEqual() {
+function deepEqual(val1, val2) {
+  //make array of keys
+  // //nested for loops
+  // var result = true;
+  if(val1 === val2) {
+    return true;
+  } 
+  //if both values are object literals
+  if(typeof val1 === 'object' && typeof val2 === 'object' && val1 !== null && val2 !== null) {
+    //loop through single object
+    for (var prop in val1) {
+      //if second object has matching properties with first object
+      if (val2.hasOwnProperty(prop)) {  
+        //recursive call: if values in object do not match
+        if (!deepEqual(val1[prop], val2[prop])) {
+          //false
+          return false;
+        }
+      } else {
+        //false when not all properties match
+        return false;
+      }
+    }
+    //true for empty objects
+    return true;
+  }
+  //false if no values match
+  return false;
 
 }
 
