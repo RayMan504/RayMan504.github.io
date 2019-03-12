@@ -15,15 +15,13 @@ function flatten(arrays) {
 // /////////////////////////////////////////////////////////////////////////////
 //takes value, test function, update function, body function
 function loop(value, test, update, body) {
-  // console.log(value, 'inside loop func');
-  //run test function. stop function if falsey 
-  if(test(value)) {
-    //call body function on value
-    //call update value
-  } else {
-    return value
+  //use while loop to update values that pass test
+  while(test(value)) {
+    //get current value
+    body(value);
+    //update value
+    value = update(value);
   }
-
 }
 
 // /////////////////////////////////////////////////////////////////////////////
@@ -31,32 +29,22 @@ function loop(value, test, update, body) {
 // /////////////////////////////////////////////////////////////////////////////
 
 function every(array, test) {
-  var some  = function(array, test) {
-    var result = false;
-    for(var i = 0; i < array.length; i++) {
-      if(test(array[i])) {
-        result = true;
-      } else {
-        result = false;
-      }
+  // var result;
+  return array.reduce((bool, val) => {
+    if(!test(val)) {
+      bool = false;
     }
-    return result;
-  }
-  var result = true;
-  if(some(array, test)) {
-    result = true
-  } else {
-    result = false;
-  }
-  return result;
+    return bool;
+  }, true)
 }
 
 // /////////////////////////////////////////////////////////////////////////////
 // dominantDirection ///////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function dominantDirection() {
-
+function dominantDirection(text) {
+  console.log(text, 'chuhj')
+  
 }
 
 // /////////////////////////////////////////////////////////////////////////////
