@@ -130,14 +130,15 @@ function arrayToList(array) {
 
 
 function listToArray(list) {
-  var arr = [];
+  // arguments[1] = arguments[1] || [];
   //since list is an array like object. use for loop on input list. 
   //start looping at top of list
   //stop loop at null value at rest key
-  for(var i = list; i = list.rest) {
-    
+  if(list.rest === null) {
+    return [list.value];
   }
-  return arr;
+  return [list.value].concat(listToArray(list.rest));
+  
 }
 
 ////////////////////////////////////////////////////////////////////////////////
