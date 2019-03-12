@@ -145,7 +145,14 @@ function listToArray(list) {
 // prepend /////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function prepend() {
+function prepend(num, list) {
+  console.log(list, '?')
+  var newList = {};
+  newList.value = num;
+  newList.rest = list;
+  console.log(newList, 'new list')
+  return newList;
+  
 
 }
 
