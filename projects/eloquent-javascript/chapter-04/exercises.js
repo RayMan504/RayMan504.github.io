@@ -9,27 +9,33 @@ function range(num1, num2, step) {
   if(step === undefined) {
     step = 1;
   }
-  //if numbers are negative
-  if(num1 < 0 || num2 < 0) {
+  if(num1 === num2) {
     return [];
-  } else
-  //if first number is larger than second number
-  if(num1 > num2) {
-    //loop backwards
-    for(var i = num1; step > 1 || i >= num2; i++) {
-      // push numbers into array
-      array.push(i);
-    }
-  } else if(num1 < num2) {
-    //loop forward
-    for(var i = num1; i <= num2; i++) {
-      //push numbers into array
-      array.push(i);
+  }
+  //if numbers are negative
+  if(step > 0) {
+    if(num1 < 0 || num2 < 0) {
+      return [];
+    } else
+    //if first number is larger than second number
+    if(num1 > num2) {
+      //loop backwards
+      for(var i = num1; i >= num2; i+= step) {
+        // push numbers into array
+        array.push(i);
+      }
+    } else {
+      //loop forward
+      for(var i = num1; i <= num2; i+=step) {
+        //push numbers into array
+        array.push(i);
+      }
     }
   }
   //return array
   return array;
 }
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // sum /////////////////////////////////////////////////////////////////////////
